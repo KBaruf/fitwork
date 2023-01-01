@@ -12,7 +12,7 @@ const HeroBanner = () => {
       p='20px 0'
     >
       <Typography color='#FF2625' fontWeight='600' fontSize='26px'>
-        Stay Fit
+        Fitness
       </Typography>
       <Typography fontWeight='700' sx={{ fontSize: { lg: '44px', xs: '40px' } }} mb='23px' mt='30px'>
         Sweat, Smile <br /> and Repeat

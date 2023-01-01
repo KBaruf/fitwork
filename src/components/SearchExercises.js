@@ -1,12 +1,20 @@
-import React from 'react';
 import { useEffect, useState } from 'react';
 import { Typography, Box, Stack, Button, TextField } from '@mui/material';
-const SearchExercises = () => {
+const SearchExercises = ({ ExerciseData }) => {
   const [searchValue, setSearchValue] = useState('');
-
+  const options = {
+    method: 'GET',
+    url: 'https://exercisedb.p.rapidapi.com/exercises/bodyPartList',
+    headers: {
+      'X-RapidAPI-Key': '4da690ee69msh5b11bf9c0f53685p1359b7jsndb3f9863682a',
+      'X-RapidAPI-Host': 'exercisedb.p.rapidapi.com',
+    },
+  };
+  const exercises = ExerciseData(options);
+  console.log(exercises);
   const searchHandler = (e) => {
     e.preventDefault();
-    const value = e.target.value;
+    const value = e.target.value.toLowerCase();
     setSearchValue(value);
   };
   const submitHandler = () => {
