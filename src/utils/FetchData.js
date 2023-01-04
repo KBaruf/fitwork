@@ -1,7 +1,7 @@
 import env from 'react-dotenv';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-const FetchData = (options) => {
+export const FetchData = (options) => {
   const [data, setData] = useState([]);
   const getData = async () => {
     try {
@@ -11,10 +11,8 @@ const FetchData = (options) => {
       console.log(error);
     }
   };
-  useEffect(() => {
-    getData();
-  }, []);
 
+  getData();
   return data;
 };
 export const exercise_options = (url) => {
@@ -28,4 +26,3 @@ export const exercise_options = (url) => {
   };
   return headers;
 };
-export default FetchData;

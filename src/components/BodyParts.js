@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Stack, Typography, Box } from '@mui/material';
 import Icon from '../assets/icons/gym.png';
+import '../App.css';
 const BodyParts = ({ item, searchValue, setSearchedExData }) => {
   return (
     <>
-      <Box
+      <Stack
         type='button'
         alignItems='center'
         justifyContent='center'
@@ -24,8 +25,12 @@ const BodyParts = ({ item, searchValue, setSearchedExData }) => {
           window.scrollTo({ top: 1800, left: 100, behavior: 'smooth' });
         }}
       >
-        <img src={Icon} alt='dumpbell' styles={{ width: '40px', height: '40px' }} />
-      </Box>
+        <img src={Icon} alt='item' style={{ width: '40px', height: '40px' }} data-id='item' />
+        <Typography fontSize='24px' fontWeight='bold' fontFamily='Alegreya' color='#3A1212' textTransform='capitalize' pt='4px' textAlign='center'>
+          {' '}
+          {item}
+        </Typography>
+      </Stack>
     </>
   );
 };
