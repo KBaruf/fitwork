@@ -7,7 +7,7 @@ import ExerciseCard from './ExerciseCard';
 const Exercises = () => {
   const { exercises, setExercises, bodyParts, searchExValue, searchedExData } = useContext(ExerContext);
   const [currentPage, setCurrentPage] = useState(1);
-  const exercisePerPage = 9;
+  const exercisePerPage = 8;
 
   const indexOfLastEx = currentPage * exercisePerPage;
   const indexOfFirstEx = indexOfLastEx - exercisePerPage;
@@ -19,7 +19,7 @@ const Exercises = () => {
   };
   return (
     <Box id='exercises' sx={{ mt: { lg: '110px' } }} mt='50px' p='20px'>
-      <Typography variant='h3' mb='46px'>
+      <Typography variant='h3' mb='46px' textAlign='center'>
         Showing Results
       </Typography>
       <Stack direction='row' sx={{ gap: { lg: '110px', sx: '50px' } }} flexWrap='wrap' justifyContent='center'>
@@ -32,7 +32,7 @@ const Exercises = () => {
         })}
       </Stack>
       <Stack mt='100px' alignItems='center'>
-        {exercises.length > 9 && (
+        {exercises.length > 8 && (
           <Pagination
             color='standard'
             shape='rounded'
