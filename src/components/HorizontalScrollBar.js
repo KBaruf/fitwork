@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { Box, Typography, Button } from '@mui/material';
+import { Box, Typography } from '@mui/material';
 import BodyParts from './BodyParts';
 import { ScrollMenu, VisibilityContext } from 'react-horizontal-scrolling-menu';
 import LeftArrowIcon from '../assets/icons/left-arrow.png';
@@ -29,14 +29,14 @@ const RightArrow = () => {
     </Typography>
   );
 };
-const HorizontalScrollBar = ({ bodyPartsData, setSearchedExData, searchValue }) => {
+const HorizontalScrollBar = ({ bodyPartsData }) => {
   return (
     <Box style={{ overflowX: 'scroll' }}>
       <ScrollMenu LeftArrow={LeftArrow} RightArrow={RightArrow}>
-        {bodyPartsData.map((item) => {
+        {bodyPartsData.map((item, index) => {
           return (
-            <Box key={item || item.id} title={item.id || item} itemId={item.id || item} m='0 40px'>
-              <BodyParts item={item} setSearchedExData={setSearchedExData} searchValue={searchValue} />
+            <Box title={item.id || item} itemId={item.id || item} m='0 40px'>
+              <BodyParts item={item} />
             </Box>
           );
         })}

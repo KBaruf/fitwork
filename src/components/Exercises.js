@@ -1,17 +1,18 @@
-import { useEffect, useState, useContext } from 'react';
+import { useState, useContext, useEffect } from 'react';
 import { Pagination } from '@mui/material';
 import { Box, Stack, Typography } from '@mui/material';
-import { FetchData, exercise_options } from '../utils/FetchData';
 import { ExerContext } from '../pages/Home';
 import ExerciseCard from './ExerciseCard';
+
 const Exercises = () => {
-  const { exercises, bodyParts, searchedExData } = useContext(ExerContext);
+  const { exercises, setExercises, bodyParts, searchExValue, searchedExData } = useContext(ExerContext);
   const [currentPage, setCurrentPage] = useState(1);
   const exercisePerPage = 9;
 
   const indexOfLastEx = currentPage * exercisePerPage;
   const indexOfFirstEx = indexOfLastEx - exercisePerPage;
   const currentEx = exercises.slice(indexOfFirstEx, indexOfLastEx);
+
   const paginate = (event, value) => {
     setCurrentPage(value);
     window.scrollTo({ top: 1800, behavior: 'smooth' });
@@ -23,15 +24,14 @@ const Exercises = () => {
       </Typography>
       <Stack direction='row' sx={{ gap: { lg: '110px', sx: '50px' } }} flexWrap='wrap' justifyContent='center'>
         {currentEx.map((exercise, index) => {
-          // const { bodyPart, equipment, gifUrl, id, name, target } = exercise;
           return (
             <>
-              <ExerciseCard key={exercise.id} exercise={exercise} />
+              <ExerciseCard key={crypto.randomUUID()} exercise={exercise} />
             </>
           );
         })}
       </Stack>
-      <Stack mt='100px' alighItems='center'>
+      <Stack mt='100px' alignItems='center'>
         {exercises.length > 9 && (
           <Pagination
             color='standard'

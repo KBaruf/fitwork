@@ -1,30 +1,30 @@
-import { useContext, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
+import axios from 'axios';
 import { Typography, Box, Stack, Button, TextField } from '@mui/material';
 import HorizontalScrollBar from './HorizontalScrollBar';
 import { ExerContext } from '../pages/Home';
-
+import { exercise_options } from '../utils/FetchData';
+import Filter from '../utils/Filter';
 const SearchExercises = () => {
   const [searchValue, setSearchValue] = useState('');
-  const { exercises, setExercises, bodyParts, setSearchedExData } = useContext(ExerContext);
+  const { exercises, setExercises, bodyParts, searchExValue, setSearchExValue } = useContext(ExerContext);
+  const [searchedExercises, setSearchedExercises] = useState([]);
 
   const searchHandler = (e) => {
     e.preventDefault();
     const value = e.target.value.toLowerCase();
     setSearchValue(value);
   };
+  const submitHandler = async () => {
+    const options = exercise_options('https://exercisedb.p.rapidapi.com/exercises');
+    const res = await axios.request(options);
+    const newExercises = res.data;
 
-  const submitHandler = () => {
     if (searchValue) {
-      const searchedExercises = exercises.filter((exercises) => {
-        const { bodyPart, equipment, name, target } = exercises;
-        if (bodyPart === searchValue || equipment === searchValue || target === searchValue || name === searchValue) {
-          return exercises;
-        }
-      });
-      setSearchedExData('');
+      const resetExercises = Filter(newExercises, searchValue);
       setExercises('');
-      setExercises(searchedExercises);
-      setSearchedExData(searchedExercises);
+      setExercises(resetExercises);
+      setSearchExValue(searchValue);
     }
     setSearchValue('');
   };
@@ -56,7 +56,7 @@ const SearchExercises = () => {
         </Button>
       </Box>
       <Box sx={{ position: 'relative', width: '100%', p: '20px' }}>
-        <HorizontalScrollBar bodyPartsData={['all', ...bodyParts]} setSearchedExData={setSearchedExData} searchValue={searchValue} />
+        <HorizontalScrollBar key={crypto.randomUUID()} bodyPartsData={['all', ...bodyParts]} />
       </Box>
     </Stack>
   );

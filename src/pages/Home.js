@@ -5,16 +5,17 @@ import { HeroBanner, SearchExercises, Exercises } from '../components';
 import { FetchData, exercise_options } from '../utils/FetchData';
 export const ExerContext = createContext();
 const Home = () => {
-  const [searchedExData, setSearchedExData] = useState([]);
-
+  const [searchExValue, setSearchExValue] = useState([]);
+  const [exercises, setExercises] = useState([]);
   // fetch exercise data from API
-  const exercises = FetchData(exercise_options('https://exercisedb.p.rapidapi.com/exercises'));
-
+  const allExercises = FetchData(exercise_options('https://exercisedb.p.rapidapi.com/exercises'));
   // fetch Body Parts
   const bodyParts = FetchData(exercise_options('https://exercisedb.p.rapidapi.com/exercises/bodyPartList'));
-
+  useEffect(() => {
+    setExercises(allExercises);
+  }, [allExercises]);
   return (
-    <ExerContext.Provider value={{ exercises, bodyParts, searchedExData, setSearchedExData }}>
+    <ExerContext.Provider value={{ exercises, setExercises, bodyParts, searchExValue, setSearchExValue }}>
       <Box>
         <HeroBanner />
         <SearchExercises />

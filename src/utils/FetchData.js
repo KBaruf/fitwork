@@ -6,13 +6,15 @@ export const FetchData = (options) => {
   const getData = async () => {
     try {
       const res = await axios.request(options);
+      setData('');
       setData(res.data);
     } catch (error) {
       console.log(error);
     }
   };
-
-  getData();
+  useEffect(() => {
+    getData();
+  }, []);
   return data;
 };
 export const exercise_options = (url) => {
