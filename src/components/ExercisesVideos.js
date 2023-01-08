@@ -9,12 +9,21 @@ const ExercisesVideos = ({ exerciseDetailsVideos, name }) => {
       <Stack justifyContent='flex-start' flexWrap='wrap' alignItems='center' sx={{ flexDirection: { lg: 'row' }, gap: { lg: '110px', xs: '0' } }}>
         {exerciseDetailsVideos?.contents
           ?.filter((items) => items.video)
-          .slice(0, 4)
+          .slice(0, 6)
           .map((videoDetail, index) => {
-            const { videoId, title, thumbnails, description } = videoDetail.video;
+            const { videoId, title, thumbnails, description, channelName } = videoDetail.video;
             return (
               <a key={index} className='exercise-video' href={`https://www.youtube.com/watch?v=${videoId}`} target='_blank' rel='noreffer'>
                 <img src={thumbnails[0].url} alt={title} />{' '}
+                <Box>
+                  {' '}
+                  <Typography variant='h5' color='#000' textTransform='upperCase'>
+                    {title}
+                  </Typography>
+                  <Typography variant='h5' color='#000' pt='10px' textTransform='lowerCase'>
+                    by {channelName}
+                  </Typography>
+                </Box>
               </a>
             );
           })}

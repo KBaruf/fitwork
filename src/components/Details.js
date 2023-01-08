@@ -28,7 +28,7 @@ const Details = ({ singleExerciseDet }) => {
         </Typography>
         <Typography variant='h6'>
           {' '}
-          Exercising regularly is important. Target you <strong> {target}</strong> by doing <strong> {name}</strong> to strengthen your bones and muscles, and improve your ability to do everyday activities.
+          Exercising regularly is important. Target your <strong> {target}</strong> by doing <strong> {name}</strong> to strengthen your bones and muscles, and improve your ability to do everyday activities.
         </Typography>
         {moreDetails.map((detail) => {
           const { icon, name } = detail;

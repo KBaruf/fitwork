@@ -15,7 +15,7 @@ const BodyParts = ({ item }) => {
     const searchedExercises = Filter(allExercises, item);
     setExercises(searchedExercises);
     //////////////////////////////////////////////
-    // console.log(bodyPartsData.indexOf(item), index);
+
     if (item === 'all') setExercises(allExercises);
     window.scrollTo({ top: 1800, left: 100, behavior: 'smooth' });
   };

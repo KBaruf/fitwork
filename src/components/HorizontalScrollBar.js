@@ -4,6 +4,7 @@ import BodyParts from './BodyParts';
 import { ScrollMenu, VisibilityContext } from 'react-horizontal-scrolling-menu';
 import LeftArrowIcon from '../assets/icons/left-arrow.png';
 import RightArrowIcon from '../assets/icons/right-arrow.png';
+import ExerciseCard from './ExerciseCard';
 
 const LeftArrow = () => {
   const { scrollPrev } = useContext(VisibilityContext);
@@ -29,17 +30,25 @@ const RightArrow = () => {
     </Typography>
   );
 };
-const HorizontalScrollBar = ({ bodyPartsData }) => {
+const HorizontalScrollBar = ({ bodyPartsData, exerciseTargetMuscle }) => {
   return (
     <Box style={{ overflowX: 'scroll' }}>
       <ScrollMenu LeftArrow={LeftArrow} RightArrow={RightArrow}>
-        {bodyPartsData.map((item, index) => {
-          return (
-            <Box key={crypto.randomUUID()} title={item.id || item} itemId={item.id || item} m='0 40px'>
-              <BodyParts item={item} />
-            </Box>
-          );
-        })}
+        {!exerciseTargetMuscle?.length
+          ? bodyPartsData?.map((item, index) => {
+              return (
+                <Box key={crypto.randomUUID()} title={item.id || item} itemId={item.id || item} m='0 40px'>
+                  {<BodyParts item={item} />}
+                </Box>
+              );
+            })
+          : exerciseTargetMuscle.map((target) => {
+              return (
+                <Box key={crypto.randomUUID()} title={target.id || target} itemId={target.id || target} m='0 40px'>
+                  <ExerciseCard exercise={target} />
+                </Box>
+              );
+            })}
       </ScrollMenu>
     </Box>
   );

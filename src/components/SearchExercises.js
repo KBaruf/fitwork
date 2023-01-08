@@ -8,7 +8,6 @@ import Filter from '../utils/Filter';
 const SearchExercises = () => {
   const [searchValue, setSearchValue] = useState('');
   const { exercises, setExercises, bodyParts, searchExValue, setSearchExValue } = useContext(ExerContext);
-  const [searchedExercises, setSearchedExercises] = useState([]);
 
   const searchHandler = (e) => {
     e.preventDefault();
