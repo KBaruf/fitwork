@@ -28,3 +28,17 @@ export const exercise_options = (url) => {
   };
   return headers;
 };
+export const youtube_options = (query) => {
+  const headers = {
+    method: 'GET',
+    url: 'https://youtube-search-and-download.p.rapidapi.com/search',
+    params: {
+      query: `${query}`,
+    },
+    headers: {
+      'X-RapidAPI-Key': `${env.EXERCISE_KEY}`,
+      'X-RapidAPI-Host': 'youtube-search-and-download.p.rapidapi.com',
+    },
+  };
+  return headers;
+};

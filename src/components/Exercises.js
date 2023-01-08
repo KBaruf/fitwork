@@ -22,7 +22,7 @@ const Exercises = () => {
       <Typography variant='h3' mb='46px' textAlign='center'>
         Showing Results
       </Typography>
-      <Stack direction='row' sx={{ gap: { lg: '110px', sx: '50px' } }} flexWrap='wrap' justifyContent='center'>
+      <Stack direction='row' sx={{ gap: { lg: '110px', xs: '50px' } }} flexWrap='wrap' justifyContent='center'>
         {currentEx.map((exercise, index) => {
           return (
             <>

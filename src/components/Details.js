@@ -23,10 +23,12 @@ const Details = ({ singleExerciseDet }) => {
     <Stack gap='60px' sx={{ flexDirection: { lg: 'row' }, p: '20px', alignItems: 'center' }}>
       <img src={gifUrl} alt={name} loading='lazy' className='detail-image' />
       <Stack sx={{ gap: { lg: '35px', sm: '20px' } }}>
-        <Typography variant='h3'>{name}</Typography>
+        <Typography variant='h3' textTransform='capitalize'>
+          {name}
+        </Typography>
         <Typography variant='h6'>
           {' '}
-          Exercising regularly is important. Target you <strong> {target}</strong> by doing <strong> {name}</strong> to improve your health and reduce the risk of disease.
+          Exercising regularly is important. Target you <strong> {target}</strong> by doing <strong> {name}</strong> to strengthen your bones and muscles, and improve your ability to do everyday activities.
         </Typography>
         {moreDetails.map((detail) => {
           const { icon, name } = detail;
