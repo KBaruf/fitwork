@@ -38,7 +38,7 @@ const HorizontalScrollBar = ({ bodyPartsData, setBodyParts, exerciseTargetMuscle
           ? bodyPartsData?.map((item, index) => {
               return (
                 <Box key={crypto.randomUUID()} title={item.id || item} itemId={item.id || item} m='0 40px'>
-                  {<BodyParts item={item} />}
+                  {<BodyParts item={item} index={index} />}
                 </Box>
               );
             })

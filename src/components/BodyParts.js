@@ -1,10 +1,9 @@
 import React, { useContext, useState } from 'react';
 import { Stack, Typography, Box } from '@mui/material';
-import Icon from '../assets/icons/gym.png';
 import { ExerContext } from '../pages/Home';
 import { FetchData, exercise_options } from '../utils/FetchData';
 import Filter from '../utils/Filter';
-const BodyParts = ({ item }) => {
+const BodyParts = ({ item, index }) => {
   const [selectedBodyPart, setSelectedBodyPart] = useState('');
   const { exercises, setExercises, searchExValue, setSearchExValue } = useContext(ExerContext);
 
@@ -15,7 +14,6 @@ const BodyParts = ({ item }) => {
     const searchedExercises = Filter(allExercises, item);
     setExercises(searchedExercises);
     //////////////////////////////////////////////
-
     if (item === 'all') setExercises(allExercises);
     window.scrollTo({ top: 1800, left: 100, behavior: 'smooth' });
   };
@@ -38,7 +36,7 @@ const BodyParts = ({ item }) => {
         }}
         onClick={handlerClick}
       >
-        <img src={Icon} alt='item' style={{ width: '40px', height: '40px' }} />
+        <img src={require(`../assets/icons/fitwork_icon_${index}.png`)} alt='item' style={{ width: '150px', height: '150px' }} />
         <Typography fontSize='24px' fontWeight='bold' fontFamily='Alegreya' color='#3A1212' textTransform='capitalize' pt='4px' textAlign='center'>
           {' '}
           {item}
