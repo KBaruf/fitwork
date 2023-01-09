@@ -7,7 +7,7 @@ import { exercise_options } from '../utils/FetchData';
 import Filter from '../utils/Filter';
 const SearchExercises = () => {
   const [searchValue, setSearchValue] = useState('');
-  const { exercises, setExercises, bodyParts, searchExValue, setSearchExValue } = useContext(ExerContext);
+  const { exercises, setExercises, setBodyParts, bodyParts, searchExValue, setSearchExValue } = useContext(ExerContext);
 
   const searchHandler = (e) => {
     e.preventDefault();
@@ -55,7 +55,7 @@ const SearchExercises = () => {
         </Button>
       </Box>
       <Box sx={{ position: 'relative', width: '100%', p: '20px' }}>
-        <HorizontalScrollBar key={crypto.randomUUID()} bodyPartsData={['all', ...bodyParts]} />
+        <HorizontalScrollBar key={crypto.randomUUID()} bodyPartsData={['all', ...bodyParts]} setBodyParts={setBodyParts} />
       </Box>
     </Stack>
   );

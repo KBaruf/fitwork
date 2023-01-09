@@ -20,7 +20,7 @@ const ExercisesVideos = ({ exerciseDetailsVideos, name }) => {
                   <Typography variant='h5' color='#000' textTransform='upperCase'>
                     {title}
                   </Typography>
-                  <Typography variant='h5' color='#000' pt='10px' textTransform='lowerCase'>
+                  <Typography variant='h5' color='#000' pt='5px' textTransform='lowerCase'>
                     by {channelName}
                   </Typography>
                 </Box>

@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { Box, Typography } from '@mui/material';
 import BodyParts from './BodyParts';
 import { ScrollMenu, VisibilityContext } from 'react-horizontal-scrolling-menu';
@@ -30,11 +30,11 @@ const RightArrow = () => {
     </Typography>
   );
 };
-const HorizontalScrollBar = ({ bodyPartsData, exerciseTargetMuscle }) => {
+const HorizontalScrollBar = ({ bodyPartsData, setBodyParts, exerciseTargetMuscle, exerciseByEquipment }) => {
   return (
     <Box style={{ overflowX: 'scroll' }}>
       <ScrollMenu LeftArrow={LeftArrow} RightArrow={RightArrow}>
-        {!exerciseTargetMuscle?.length
+        {bodyPartsData
           ? bodyPartsData?.map((item, index) => {
               return (
                 <Box key={crypto.randomUUID()} title={item.id || item} itemId={item.id || item} m='0 40px'>
@@ -42,13 +42,22 @@ const HorizontalScrollBar = ({ bodyPartsData, exerciseTargetMuscle }) => {
                 </Box>
               );
             })
-          : exerciseTargetMuscle.map((target) => {
+          : exerciseTargetMuscle?.length &&
+            exerciseTargetMuscle?.map((target) => {
               return (
                 <Box key={crypto.randomUUID()} title={target.id || target} itemId={target.id || target} m='0 40px'>
                   <ExerciseCard exercise={target} />
                 </Box>
               );
             })}
+        {exerciseByEquipment?.length &&
+          exerciseByEquipment?.map((target) => {
+            return (
+              <Box key={crypto.randomUUID()} title={target.id || target} itemId={target.id || target} m='0 40px'>
+                <ExerciseCard exercise={target} />
+              </Box>
+            );
+          })}
       </ScrollMenu>
     </Box>
   );

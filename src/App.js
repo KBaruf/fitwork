@@ -7,7 +7,7 @@ import { Home } from './pages';
 const App = () => {
   return (
     <>
-      <Box width='400px' sx={{ width: { xl: '1288px' } }} m=' 0 auto'>
+      <Box width='400px' sx={{ width: { xl: '1488px' } }} m=' 0 auto'>
         <Navbar />
         <Routes>
           <Route path='/' element={<Home />} />

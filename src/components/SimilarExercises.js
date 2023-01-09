@@ -27,12 +27,18 @@ const SimilarExercises = ({ target, equipment }) => {
     equipment && fetchExerciseByEquipments();
   }, [target, equipment]);
   return (
-    <Box sx={{ mt: { lg: '100px', xs: '0' } }}>
-      <Typography variant='h3' textAlign='center'>
-        Exercises that Target the Same Muscle Group
+    <Box sx={{ mt: { lg: '80px', xs: '40px' } }} mb={5}>
+      <Typography variant='h3' textAlign='center' textTransform='capitalize'>
+        Targets the Same Muscle Group
+      </Typography>
+      <Stack direction='row' sx={{ p: '20px', position: 'relative' }}>
+        {exerciseTargetMuscle?.length ? <HorizontalScrollBar exerciseTargetMuscle={exerciseTargetMuscle} /> : <Loader />}
+      </Stack>
+      <Typography variant='h3' textAlign='center' mt={5} textTransform='capitalize'>
+        Used with the same Equipment
       </Typography>
       <Stack direction='row' sx={{ p: '2', position: 'relative' }}>
-        {exerciseTargetMuscle?.length ? <HorizontalScrollBar exerciseTargetMuscle={exerciseTargetMuscle} /> : <Loader />}
+        {exerciseByEquipments?.length ? <HorizontalScrollBar exerciseByEquipment={exerciseByEquipments} /> : <Loader />}
       </Stack>
     </Box>
   );
