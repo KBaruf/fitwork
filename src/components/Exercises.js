@@ -18,7 +18,7 @@ const Exercises = () => {
     window.scrollTo({ top: 1800, behavior: 'smooth' });
   };
   return (
-    <Box id='exercises' sx={{ mt: { lg: '110px' } }} mt='50px' p='20px'>
+    <Box id='exercises' sx={{ mt: { lg: '10px' } }} mt='50px' p='20px'>
       <Typography variant='h3' mb='46px' textAlign='center'>
         Showing Results
       </Typography>

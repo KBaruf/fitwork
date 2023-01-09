@@ -11,11 +11,13 @@ const HeroBanner = () => {
       position='relative'
       p='20px 20px'
     >
-      <Typography color='#FF2625' fontWeight='600' fontSize='26px'>
-        Fitness
+      <Typography color='#FF2625' fontWeight='600' fontSize='26px' textTransform='upperCase'>
+        Challenge Yourself
       </Typography>
       <Typography fontWeight='700' sx={{ fontSize: { lg: '44px', xs: '40px' } }} mb='23px' mt='30px'>
-        Sweat, Smile <br /> and Repeat
+        Increase Your
+        <br />
+        Muscle Power
       </Typography>
       <Typography fontSize='22px' lineHeight='35px' mb={3}>
         Checkout the most Effective Exercises

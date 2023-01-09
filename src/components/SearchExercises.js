@@ -7,6 +7,7 @@ import { exercise_options } from '../utils/FetchData';
 import Filter from '../utils/Filter';
 const SearchExercises = () => {
   const [searchValue, setSearchValue] = useState('');
+  const [showError, setShowError] = useState(false);
   const { exercises, setExercises, setBodyParts, bodyParts, searchExValue, setSearchExValue } = useContext(ExerContext);
 
   const searchHandler = (e) => {
@@ -17,8 +18,9 @@ const SearchExercises = () => {
   const submitHandler = async () => {
     const options = exercise_options('https://exercisedb.p.rapidapi.com/exercises');
     const res = await axios.request(options);
-    const newExercises = res.data;
-
+    const newExercises = await res.data;
+    newExercises && window.scrollTo({ top: 1700, behavior: 'smooth' });
+    !newExercises && setShowError(true);
     if (searchValue) {
       const resetExercises = Filter(newExercises, searchValue);
       setExercises('');
@@ -54,6 +56,11 @@ const SearchExercises = () => {
           Search
         </Button>
       </Box>
+      {showError && (
+        <Typography variant='h5' color='red'>
+          No such exercise, Please Try again!!
+        </Typography>
+      )}
       <Box sx={{ position: 'relative', width: '100%', p: '20px' }}>
         <HorizontalScrollBar key={crypto.randomUUID()} bodyPartsData={['all', ...bodyParts]} setBodyParts={setBodyParts} />
       </Box>
