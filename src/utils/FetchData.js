@@ -1,4 +1,3 @@
-import env from 'react-dotenv';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 
@@ -22,7 +21,7 @@ export const exercise_options = (url) => {
     method: 'GET',
     url: `${url}`,
     headers: {
-      'X-RapidAPI-Key': `${env.EXERCISE_KEY}`,
+      'X-RapidAPI-Key': `${process.env.REACT_APP_EXERCISE_KEY}`,
       'X-RapidAPI-Host': 'exercisedb.p.rapidapi.com',
     },
   };
@@ -36,7 +35,7 @@ export const youtube_options = (query) => {
       query: `${query}`,
     },
     headers: {
-      'X-RapidAPI-Key': `${env.EXERCISE_KEY}`,
+      'X-RapidAPI-Key': `${process.env.REACT_APP_EXERCISE_KEY}`,
       'X-RapidAPI-Host': 'youtube-search-and-download.p.rapidapi.com',
     },
   };
@@ -47,7 +46,7 @@ export const targetMuscles_options = (url) => {
     method: 'GET',
     url: `${url}`,
     headers: {
-      'X-RapidAPI-Key': `${env.EXERCISE_KEY}`,
+      'X-RapidAPI-Key': `${process.env.REACT_APP_EXERCISE_KEY}`,
       'X-RapidAPI-Host': 'exercisedb.p.rapidapi.com',
     },
   };
@@ -58,7 +57,7 @@ export const equipmentsExercises_options = (url) => {
     method: 'GET',
     url: `${url}`,
     headers: {
-      'X-RapidAPI-Key': `${env.EXERCISE_KEY}`,
+      'X-RapidAPI-Key': `${process.env.REACT_APP_EXERCISE_KEY}`,
       'X-RapidAPI-Host': 'exercisedb.p.rapidapi.com',
     },
   };
