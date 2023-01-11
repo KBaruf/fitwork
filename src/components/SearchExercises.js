@@ -20,9 +20,12 @@ const SearchExercises = () => {
     const res = await axios.request(options);
     const newExercises = await res.data;
     newExercises && window.scrollTo({ top: 1700, behavior: 'smooth' });
-    !newExercises && setShowError(true);
     if (searchValue) {
       const resetExercises = Filter(newExercises, searchValue);
+      if (resetExercises?.length === 0) {
+        console.log(resetExercises);
+        setShowError(true);
+      }
       setExercises('');
       setExercises(resetExercises);
       setSearchExValue(searchValue);
@@ -56,14 +59,14 @@ const SearchExercises = () => {
           Search
         </Button>
       </Box>
+      <Box sx={{ position: 'relative', width: '100%', p: '20px' }}>
+        <HorizontalScrollBar key={crypto.randomUUID()} bodyPartsData={['all', ...bodyParts]} setBodyParts={setBodyParts} />
+      </Box>
       {showError && (
         <Typography variant='h5' color='red'>
           No such exercise, Please Try again!!
         </Typography>
       )}
-      <Box sx={{ position: 'relative', width: '100%', p: '20px' }}>
-        <HorizontalScrollBar key={crypto.randomUUID()} bodyPartsData={['all', ...bodyParts]} setBodyParts={setBodyParts} />
-      </Box>
     </Stack>
   );
 };

@@ -11,7 +11,7 @@ const Exercises = () => {
 
   const indexOfLastEx = currentPage * exercisePerPage;
   const indexOfFirstEx = indexOfLastEx - exercisePerPage;
-  const currentEx = exercises.slice(indexOfFirstEx, indexOfLastEx);
+  const currentEx = exercises?.slice(indexOfFirstEx, indexOfLastEx);
 
   const paginate = (event, value) => {
     setCurrentPage(value);
@@ -23,7 +23,7 @@ const Exercises = () => {
         Showing Results
       </Typography>
       <Stack direction='row' sx={{ gap: { lg: '110px', xs: '50px' } }} flexWrap='wrap' justifyContent='center'>
-        {currentEx.map((exercise, index) => {
+        {currentEx?.map((exercise, index) => {
           return (
             <div key={crypto.randomUUID()}>
               <ExerciseCard exercise={exercise} />
@@ -32,7 +32,7 @@ const Exercises = () => {
         })}
       </Stack>
       <Stack mt='100px' alignItems='center'>
-        {exercises.length > 9 && (
+        {exercises?.length > 9 && (
           <Pagination
             color='standard'
             shape='rounded'
